@@ -6,49 +6,43 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyviewHolder> {
-
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     Context context;
-    List<Attributes> attributesList;
+    List<Provinsi> provinsiList;
 
     public RecyclerAdapter(Context context, List<Provinsi> provinsiList) {
         this.context = context;
-        this.attributesList = attributesList;
+        this.provinsiList = provinsiList;
     }
 
-    public void setProvinsiList() {
-        notifyDataSetChanged();
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_adapter,parent,false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public MyviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_adapter,parent,false);
-        return new MyviewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(RecyclerAdapter.MyviewHolder holder, int position) {
-        holder.provinsiName.setText(attributesList.get(position).getProvinsi());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Attributes attributes = provinsiList.get(position).getAttributes();
+        holder.t1.setText(attributes.getProvinsi());
     }
 
     @Override
     public int getItemCount() {
-        if(attributesList != null){
-            return attributesList.size();
-        }
-        return 0;
+        return provinsiList.size();
     }
 
-    public class MyviewHolder extends RecyclerView.ViewHolder {
-        public TextView provinsiName;
-
-        public MyviewHolder(View itemView) {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView t1,t2,t3,t4;
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            provinsiName = itemView.findViewById(R.id.nameProvinsi);
+            t1 = itemView.findViewById(R.id.nameProvinsi);
         }
     }
 }

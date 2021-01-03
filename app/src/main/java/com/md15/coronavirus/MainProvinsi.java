@@ -46,8 +46,7 @@ public class MainProvinsi extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Provinsi>> call, Response<List<Provinsi>> response) {
 
-                provinsiList = response.body();
-                recyclerAdapter.setProvinsiList();
+                recyclerView.setAdapter(new RecyclerAdapter(MainProvinsi.this, response.body()));
                 Log.d("TAG","Response = " + provinsiList);
 
             }
