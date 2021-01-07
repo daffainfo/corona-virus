@@ -20,7 +20,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         this.provinsiList = provinsiList;
     }
 
-    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_adapter,parent,false);
@@ -39,10 +38,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView t1,t2,t3,t4;
+        TextView t1;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             t1 = itemView.findViewById(R.id.nameProvinsi);
+
         }
     }
 }

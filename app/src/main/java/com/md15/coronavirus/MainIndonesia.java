@@ -2,6 +2,7 @@ package com.md15.coronavirus;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,7 +30,6 @@ public class MainIndonesia extends AppCompatActivity {
         call.enqueue(new Callback<List<Indonesia>>() {
             @Override
             public void onResponse(Call<List<Indonesia>> call, Response<List<Indonesia>> response) {
-
                 List<Indonesia> indo = response.body();
                 for (Indonesia indonesia : indo) {
                     String content = "";

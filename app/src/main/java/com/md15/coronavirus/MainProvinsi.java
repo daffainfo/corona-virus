@@ -1,11 +1,14 @@
 package com.md15.coronavirus;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,14 +48,34 @@ public class MainProvinsi extends AppCompatActivity {
         call.enqueue(new Callback<List<Provinsi>>() {
             @Override
             public void onResponse(Call<List<Provinsi>> call, Response<List<Provinsi>> response) {
-
                 recyclerView.setAdapter(new RecyclerAdapter(MainProvinsi.this, response.body()));
-                Log.d("TAG","Response = " + provinsiList);
+                recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+                recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
+                    @Override
+                    public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent e) {
+                        View view = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                        if (view != null){
+                            Toast.makeText(getApplicationContext(), "Test", Toast.LENGTH_SHORT).show();
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public void onTouchEvent(RecyclerView recyclerView, MotionEvent e) {
+
+                    }
+
+                    @Override
+                    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                    }
+                });
             }
             @Override
             public void onFailure(Call<List<Provinsi>> call, Throwable t) {
-
+                t.printStackTrace();
+                Toast.makeText(MainProvinsi.this, "Please Try Again", Toast.LENGTH_SHORT).show();
             }
         });
     }
