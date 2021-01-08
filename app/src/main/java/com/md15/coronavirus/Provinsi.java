@@ -1,6 +1,6 @@
 package com.md15.coronavirus;
 
-public class Provinsi {
+public class Provinsi extends Attributes {
 
     private Attributes attributes;
 

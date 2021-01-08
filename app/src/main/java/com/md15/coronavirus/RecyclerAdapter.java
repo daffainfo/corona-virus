@@ -1,10 +1,12 @@
 package com.md15.coronavirus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,10 +41,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView t1;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             t1 = itemView.findViewById(R.id.nameProvinsi);
 
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                Attributes attributes = provinsiList.get(position).getAttributes();
+//                Intent intent = new Intent(context, DetailProvinsi.class);
+//                intent.putExtra("", attributes.getProvinsi());
+//                context.startActivity(intent);
+                Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
+            });
         }
     }
 }

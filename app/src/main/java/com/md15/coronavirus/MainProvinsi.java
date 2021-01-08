@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainProvinsi extends AppCompatActivity {
 
     List<Provinsi> provinsiList;
+    List<Attributes> attributesList;
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
 
@@ -30,6 +32,7 @@ public class MainProvinsi extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         provinsiList = new ArrayList<>();
+        attributesList = new ArrayList<>();
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -50,27 +53,6 @@ public class MainProvinsi extends AppCompatActivity {
             public void onResponse(Call<List<Provinsi>> call, Response<List<Provinsi>> response) {
                 recyclerView.setAdapter(new RecyclerAdapter(MainProvinsi.this, response.body()));
                 recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
-                recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
-                    @Override
-                    public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent e) {
-                        View view = recyclerView.findChildViewUnder(e.getX(), e.getY());
-                        if (view != null){
-                            Toast.makeText(getApplicationContext(), "Test", Toast.LENGTH_SHORT).show();
-                        }
-                        return false;
-                    }
-
-                    @Override
-                    public void onTouchEvent(RecyclerView recyclerView, MotionEvent e) {
-
-                    }
-
-                    @Override
-                    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-                    }
-                });
             }
             @Override
             public void onFailure(Call<List<Provinsi>> call, Throwable t) {
