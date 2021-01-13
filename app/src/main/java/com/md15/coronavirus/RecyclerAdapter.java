@@ -17,9 +17,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     Context context;
     List<Provinsi> provinsiList;
 
-    public RecyclerAdapter(Context context, List<Provinsi> provinsiList) {
-        this.context = context;
+    public RecyclerAdapter(List<Provinsi> provinsiList, Context context) {
         this.provinsiList = provinsiList;
+        this.context = context;
     }
 
     @Override
@@ -42,17 +42,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView t1;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
             t1 = itemView.findViewById(R.id.nameProvinsi);
 
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                Attributes attributes = provinsiList.get(position).getAttributes();
-//                Intent intent = new Intent(context, DetailProvinsi.class);
-//                intent.putExtra("", attributes.getProvinsi());
-//                context.startActivity(intent);
-                Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Attributes attributes = provinsiList.get(getAdapterPosition()).getAttributes();
+                    Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context,DetailProvinsi.class);
+                    intent.putExtra("provinsi",attributes.getProvinsi());
+                    intent.putExtra("positif", attributes.getKasus_Posi());
+                    intent.putExtra("sembuh", attributes.getKasus_Semb());
+                    intent.putExtra("meninggal", attributes. getKasus_Meni());
+                    context.startActivity(intent);
+                }
             });
         }
     }

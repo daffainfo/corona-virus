@@ -5,10 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,10 +31,10 @@ public class MainProvinsi extends AppCompatActivity {
         provinsiList = new ArrayList<>();
         attributesList = new ArrayList<>();
 
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerAdapter = new RecyclerAdapter(getApplicationContext(),provinsiList);
+        recyclerAdapter = new RecyclerAdapter(provinsiList, this);
         recyclerView.setAdapter(recyclerAdapter);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -51,7 +48,7 @@ public class MainProvinsi extends AppCompatActivity {
         call.enqueue(new Callback<List<Provinsi>>() {
             @Override
             public void onResponse(Call<List<Provinsi>> call, Response<List<Provinsi>> response) {
-                recyclerView.setAdapter(new RecyclerAdapter(MainProvinsi.this, response.body()));
+                recyclerView.setAdapter(new RecyclerAdapter(response.body(), MainProvinsi.this));
                 recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
             }
             @Override
