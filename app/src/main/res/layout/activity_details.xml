@@ -4,32 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".MainIndonesia">
+    tools:context=".MainProvinsi">
+
+    <TextView
+        android:id="@+id/descProvinsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama provinsi"
+        android:gravity="center"
+        android:layout_marginTop="150dp"/>
 
     <TextView
         android:id="@+id/provinsiDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/descProvinsi"/>
+
+    <TextView
+        android:id="@+id/descPositif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jumlah Positif"
+        android:gravity="center"
+        android:layout_below="@id/provinsiDetails"/>
 
     <TextView
         android:id="@+id/positifDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:layout_below="@id/provinsiDetails"/>
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/descPositif"/>
+
+    <TextView
+        android:id="@+id/descSembuh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jumlah Sembuh"
+        android:gravity="center"
+        android:layout_below="@id/positifDetails"/>
+
     <TextView
         android:id="@+id/sembuhDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:layout_below="@id/positifDetails"/>
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/descSembuh"/>
+
+    <TextView
+        android:id="@+id/descMeninggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jumlah Meninggal"
+        android:gravity="center"
+        android:layout_below="@id/sembuhDetails"/>
 
     <TextView
         android:id="@+id/meninggalDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:layout_below="@id/sembuhDetails"/>
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/descMeninggal"/>
 
 </RelativeLayout>
