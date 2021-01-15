@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -22,32 +21,36 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         this.context = context;
     }
 
+    //Inisialisasi class ViewHolder
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_adapter,parent,false);
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_adapter,viewGroup,false);
         return new ViewHolder(v);
     }
 
+    //Untuk mengatur data nama provinsi di API kawalcorona
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Attributes attributes = provinsiList.get(position).getAttributes();
-        holder.t1.setText(attributes.getProvinsi());
+        viewHolder.nama.setText(attributes.getProvinsi());
     }
 
+    //Untuk mendapatkan berapa banyak data
     @Override
     public int getItemCount() {
         return provinsiList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView t1;
+        TextView nama;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
-            context = itemView.getContext();
-            t1 = itemView.findViewById(R.id.nameProvinsi);
+        public ViewHolder(View view) {
+            super(view);
+            context = view.getContext();
+            nama = view.findViewById(R.id.nameProvinsi);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            //Fungsi onclick yang nanti akan bisa melihat detail setiap provinsi dan menampilkan toast
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Attributes attributes = provinsiList.get(getAdapterPosition()).getAttributes();

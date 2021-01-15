@@ -10,17 +10,19 @@ public class TabLayout extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
 
-        TabHost th = getTabHost();
-        TabHost.TabSpec ts;
-        Intent i;
+        TabHost tabHost = getTabHost();
+        TabHost.TabSpec tabSpec;
+        Intent intent;
 
-        i = new Intent().setClass(this, MainIndonesia.class);
-        ts = th.newTabSpec("Indonesia").setIndicator("Indonesia", null).setContent(i);
-        th.addTab(ts);
+        //Menambahkan tab baru untuk menampilkan indonesia
+        intent = new Intent().setClass(this, MainIndonesia.class);
+        tabSpec = tabHost.newTabSpec("Indonesia").setIndicator("Indonesia", null).setContent(intent);
+        tabHost.addTab(tabSpec);
 
-        i = new Intent().setClass(this, MainProvinsi.class);
-        ts = th.newTabSpec("Provinsi").setIndicator("Provinsi", null).setContent(i);
-        th.addTab(ts);
+        //Menambahkan tab baru untuk menampilkan provinsi
+        intent = new Intent().setClass(this, MainProvinsi.class);
+        tabSpec = tabHost.newTabSpec("Provinsi").setIndicator("Provinsi", null).setContent(intent);
+        tabHost.addTab(tabSpec);
 
     }
 }
