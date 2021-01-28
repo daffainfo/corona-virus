@@ -9,10 +9,25 @@
         android:id="@+id/provinsiDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:text="Nama Provinsi"/>
+        android:layout_margin="30dp"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="7"
+        android:orientation="horizontal" >
+
+    <lecho.lib.hellocharts.view.PieChartView
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:gravity="center"
@@ -21,48 +36,37 @@
         android:layout_weight="3"
         android:orientation="horizontal" >
 
-    <lecho.lib.hellocharts.view.PieChartView
-        android:id="@+id/chart"
-        android:layout_width="match_parent"
-        android:layout_height="607dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:orientation="horizontal" >
-
         <TextView
             android:id="@+id/positifDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-50dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_margin="15dp"
             android:textColor="@color/white"
-            android:text="Positif"/>
+            android:text="Positif"
+            />
+
+        <TextView
+            android:id="@+id/meninggalDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="Meninggal"/>
 
         <TextView
             android:id="@+id/sembuhDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="-50dp"
-            android:textSize="30sp"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
             android:text="Sembuh"/>
 
-        <TextView
-            android:id="@+id/meninggalDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-50dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:text="Meninggal"/>
-
     </LinearLayout>
+    
 </LinearLayout>

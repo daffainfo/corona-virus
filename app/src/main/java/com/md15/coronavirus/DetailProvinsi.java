@@ -13,10 +13,7 @@ import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
 
 public class DetailProvinsi extends AppCompatActivity {
-    private TextView provinsi;
-    private TextView positif;
-    private TextView sembuh;
-    private TextView meninggal;
+    private TextView provinsi, positif, sembuh, meninggal;
     private PieChartView pieChartView;
 
     @Override
@@ -40,23 +37,30 @@ public class DetailProvinsi extends AppCompatActivity {
         //Set text
         provinsi.setText(setProvinsi);
         positif.setText("Positif\n" + setPositif);
+        meninggal.setText("Meninggal\n" + setMeninggal);
         sembuh.setText("Sembuh\n" + setSembuh);
-        meninggal.setText("Wafat\n" + setMeninggal);
 
         //String -> int agar bisa dijadikan chart
-        int meninggal = Integer.parseInt(setMeninggal);
         int positif = Integer.parseInt(setPositif);
         int sembuh = Integer.parseInt(setSembuh);
+        int meninggal = Integer.parseInt(setMeninggal);
+        int totalKasus = positif + sembuh + meninggal;
+
+        //Persentase untuk pie chart
+        float persenPositif = (positif * 100) / totalKasus;
+        float persenSembuh = (sembuh * 100) / totalKasus;
+        float persenMeninggal = (meninggal * 100) / totalKasus;
 
         //Pie chart
         List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(positif, Color.parseColor("#C7C000")).setLabel("Positif"));
-        pieData.add(new SliceValue(meninggal, Color.parseColor("#FF0011")).setLabel("Meninggal"));
-        pieData.add(new SliceValue(sembuh, Color.parseColor("#00BF03")).setLabel("Sembuh"));
+        pieData.add(new SliceValue(positif, Color.parseColor("#ffae01")).setLabel("Positif " + persenPositif + "%"));
+        pieData.add(new SliceValue(meninggal, Color.parseColor("#ce0000")).setLabel("Meninggal " + persenMeninggal + "%"));
+        pieData.add(new SliceValue(sembuh, Color.parseColor("#22b700")).setLabel("Sembuh " + persenSembuh + "%"));
 
         PieChartData pieChartData = new PieChartData(pieData);
-        pieChartData.setHasLabels(true).setValueLabelTextSize(14);
-        pieChartData.setHasCenterCircle(true).setCenterText1("Total kasus: " + String.valueOf(meninggal + positif + sembuh)).setCenterText1FontSize(20).setCenterText1Color(Color.GRAY);
+        pieChartData.setHasLabels(true).setValueLabelTextSize(12);
+        pieChartData.setHasCenterCircle(true).setCenterText1("Total kasus: " + String.valueOf(totalKasus)).setCenterText1FontSize(18).setCenterText1Color(Color.WHITE);
         pieChartView.setPieChartData(pieChartData);
+        pieChartView.setChartRotationEnabled(false);
     }
 }
