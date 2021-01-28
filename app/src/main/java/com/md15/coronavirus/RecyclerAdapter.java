@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class    RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     Context context;
     List<Provinsi> provinsiList;
 
@@ -32,7 +32,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Attributes attributes = provinsiList.get(position).getAttributes();
+        int meninggal = Integer.parseInt(attributes.getKasus_Meni());
+        int positif = Integer.parseInt(attributes.getKasus_Posi());
+        int sembuh = Integer.parseInt(attributes.getKasus_Semb());
+
         viewHolder.nama.setText(attributes.getProvinsi());
+        viewHolder.total.setText("Total kasus: " + String.valueOf(meninggal + positif + sembuh));
     }
 
     //Untuk mendapatkan berapa banyak data
@@ -42,12 +47,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nama;
+        TextView nama, total;
 
         public ViewHolder(View view) {
             super(view);
             context = view.getContext();
             nama = view.findViewById(R.id.nameProvinsi);
+            total = view.findViewById(R.id.totalKasus);
 
             //Fungsi onclick yang nanti akan bisa melihat detail setiap provinsi dan menampilkan toast
             view.setOnClickListener(new View.OnClickListener() {
