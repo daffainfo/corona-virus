@@ -1,4 +1,4 @@
-package com.md15.coronavirus;
+package com.md15.coronavirus.retrofit;
 
 import java.util.List;
 import retrofit2.Call;

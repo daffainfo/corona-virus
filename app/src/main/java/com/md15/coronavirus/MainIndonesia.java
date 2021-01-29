@@ -8,6 +8,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.md15.coronavirus.retrofit.Indonesia;
+import com.md15.coronavirus.retrofit.KawalcoronaAPI;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.md15.coronavirus;
+package com.md15.coronavirus.recycler;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,13 +10,18 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.md15.coronavirus.DetailProvinsi;
+import com.md15.coronavirus.R;
+import com.md15.coronavirus.retrofit.AttributesIndo;
+import com.md15.coronavirus.retrofit.Provinsi;
+
 import java.util.List;
 
-public class    RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapterIndonesia.ViewHolder> {
     Context context;
     List<Provinsi> provinsiList;
 
-    public RecyclerAdapter(List<Provinsi> provinsiList, Context context) {
+    public RecyclerAdapterIndonesia(List<Provinsi> provinsiList, Context context) {
         this.provinsiList = provinsiList;
         this.context = context;
     }
@@ -31,7 +36,7 @@ public class    RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Vie
     //Untuk mengatur data nama provinsi di API kawalcorona
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Attributes attributes = provinsiList.get(position).getAttributes();
+        AttributesIndo attributes = provinsiList.get(position).getAttributes();
         int meninggal = Integer.parseInt(attributes.getKasus_Meni());
         int positif = Integer.parseInt(attributes.getKasus_Posi());
         int sembuh = Integer.parseInt(attributes.getKasus_Semb());
@@ -59,13 +64,13 @@ public class    RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Vie
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Attributes attributes = provinsiList.get(getAdapterPosition()).getAttributes();
-                    Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context,DetailProvinsi.class);
-                    intent.putExtra("provinsi",attributes.getProvinsi());
-                    intent.putExtra("positif", attributes.getKasus_Posi());
-                    intent.putExtra("sembuh", attributes.getKasus_Semb());
-                    intent.putExtra("meninggal", attributes. getKasus_Meni());
+                    AttributesIndo attributesIndo = provinsiList.get(getAdapterPosition()).getAttributes();
+                    Toast.makeText(context, "Nama Provinsi: " + attributesIndo.getProvinsi(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, DetailProvinsi.class);
+                    intent.putExtra("provinsi", attributesIndo.getProvinsi());
+                    intent.putExtra("positif", attributesIndo.getKasus_Posi());
+                    intent.putExtra("sembuh", attributesIndo.getKasus_Semb());
+                    intent.putExtra("meninggal", attributesIndo. getKasus_Meni());
                     context.startActivity(intent);
                 }
             });

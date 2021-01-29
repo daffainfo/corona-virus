@@ -1,4 +1,4 @@
-package com.md15.coronavirus;
+package com.md15.coronavirus.retrofit;
 // Model class dari API kawal corona untuk menampilkan data covid indonesia
 public class Indonesia {
 
