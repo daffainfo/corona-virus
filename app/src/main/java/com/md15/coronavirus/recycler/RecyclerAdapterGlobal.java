@@ -34,14 +34,15 @@ public class RecyclerAdapterGlobal extends RecyclerView.Adapter<RecyclerAdapterG
         return new ViewHolder(v);
     }
 
-    //Untuk mengatur data nama provinsi di API kawalcorona
+    //Untuk mengatur data nama global di API kawalcorona
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Attributes attributes = globalList.get(position).getAttributes();
         System.out.println(attributes.getActive());
+        int confirmed = Integer.parseInt(attributes.getConfirmed());
 
         viewHolder.nama.setText(attributes.getCountry_Region());
-        viewHolder.total.setText("Total kasus: " + String.valueOf(Integer.parseInt(attributes.getConfirmed())));
+        viewHolder.total.setText("Total kasus: " + String.valueOf(confirmed));
     }
 
     //Untuk mendapatkan berapa banyak data
@@ -59,14 +60,15 @@ public class RecyclerAdapterGlobal extends RecyclerView.Adapter<RecyclerAdapterG
             nama = view.findViewById(R.id.nama);
             total = view.findViewById(R.id.totalKasus);
 
-            //Fungsi onclick yang nanti akan bisa melihat detail setiap provinsi dan menampilkan toast
+            //Fungsi onclick yang nanti akan bisa melihat detail setiap negara dan menampilkan toast
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Attributes attributes = globalList.get(getAdapterPosition()).getAttributes();
-                    Toast.makeText(context, "Nama Provinsi: " + attributes.getCountry_Region(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Nama Negara: " + attributes.getCountry_Region(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, DetailGlobal.class);
                     intent.putExtra("region", attributes.getCountry_Region());
+                    intent.putExtra("confirmed", attributes.getConfirmed());
                     intent.putExtra("active", attributes.getActive());
                     intent.putExtra("recovered", attributes.getRecovered());
                     intent.putExtra("deaths", attributes.getDeaths());

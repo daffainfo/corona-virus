@@ -22,7 +22,7 @@ public class DetailGlobal extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         //Mengakses ID layout untuk textview
-        provinsi = findViewById(R.id.provinsiDetails);
+        provinsi = findViewById(R.id.nameDetails);
         positif = findViewById(R.id.positifDetails);
         sembuh = findViewById(R.id.sembuhDetails);
         meninggal = findViewById(R.id.meninggalDetails);
@@ -33,6 +33,7 @@ public class DetailGlobal extends AppCompatActivity {
         String setPositif = getIntent().getExtras().getString("active");
         String setSembuh = getIntent().getExtras().getString("recovered");
         String setMeninggal = getIntent().getExtras().getString("deaths");
+        String setTotal = getIntent().getExtras().getString("confirmed");
 
         //Set text
         provinsi.setText(setRegion);
@@ -44,7 +45,7 @@ public class DetailGlobal extends AppCompatActivity {
         int positif = Integer.parseInt(setPositif);
         int sembuh = Integer.parseInt(setSembuh);
         int meninggal = Integer.parseInt(setMeninggal);
-        int totalKasus = positif + sembuh + meninggal;
+        int totalKasus = Integer.parseInt(setTotal);
 
         //Persentase untuk pie chart
         float persenPositif = (positif * 100) / totalKasus;

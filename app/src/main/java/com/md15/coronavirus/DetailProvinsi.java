@@ -22,7 +22,7 @@ public class DetailProvinsi extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         //Mengakses ID layout untuk textview
-        provinsi = findViewById(R.id.provinsiDetails);
+        provinsi = findViewById(R.id.nameDetails);
         positif = findViewById(R.id.positifDetails);
         sembuh = findViewById(R.id.sembuhDetails);
         meninggal = findViewById(R.id.meninggalDetails);

@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/provinsiDetails"
+        android:id="@+id/nameDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"

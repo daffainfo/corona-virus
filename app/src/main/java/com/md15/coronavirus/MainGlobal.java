@@ -32,7 +32,7 @@ public class MainGlobal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Mengakses id layout untuk textview dan swipe refresh
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_adapter);
         recyclerView = findViewById(R.id.recyclerview);
 
         //Untuk menyusun item secara vertical
@@ -61,7 +61,6 @@ public class MainGlobal extends AppCompatActivity {
             //Jika berhasil, maka akan menampilkan recycler view yang berisi response dari API
             @Override
             public void onResponse(Call<List<Global>> call, Response<List<Global>> response) {
-                Log.d("Global", response.body().toString());
                 recyclerView.setAdapter(new RecyclerAdapterGlobal(response.body(), MainGlobal.this));
                 //Memberi batasan antara satu dengan yang lain
                 recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));

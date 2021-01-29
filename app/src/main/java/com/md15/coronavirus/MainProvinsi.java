@@ -31,7 +31,7 @@ public class MainProvinsi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Mengakses id layout untuk textview dan swipe refresh
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_adapter);
         recyclerView = findViewById(R.id.recyclerview);
 
         //Untuk menyusun item secara vertical
