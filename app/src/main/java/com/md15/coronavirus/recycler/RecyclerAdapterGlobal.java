@@ -10,19 +10,20 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.md15.coronavirus.DetailGlobal;
 import com.md15.coronavirus.DetailProvinsi;
 import com.md15.coronavirus.R;
-import com.md15.coronavirus.retrofit.provinsi.Attributes;
-import com.md15.coronavirus.retrofit.provinsi.Provinsi;
+import com.md15.coronavirus.retrofit.global.Attributes;
+import com.md15.coronavirus.retrofit.global.Global;
 
 import java.util.List;
 
-public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapterIndonesia.ViewHolder> {
+public class RecyclerAdapterGlobal extends RecyclerView.Adapter<RecyclerAdapterGlobal.ViewHolder> {
     Context context;
-    List<Provinsi> provinsiList;
+    List<Global> globalList;
 
-    public RecyclerAdapterIndonesia(List<Provinsi> provinsiList, Context context) {
-        this.provinsiList = provinsiList;
+    public RecyclerAdapterGlobal(List<Global> globalList, Context context) {
+        this.globalList = globalList;
         this.context = context;
     }
 
@@ -36,19 +37,17 @@ public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapt
     //Untuk mengatur data nama provinsi di API kawalcorona
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Attributes attributes = provinsiList.get(position).getAttributes();
-        int meninggal = Integer.parseInt(attributes.getKasus_Meni());
-        int positif = Integer.parseInt(attributes.getKasus_Posi());
-        int sembuh = Integer.parseInt(attributes.getKasus_Semb());
+        Attributes attributes = globalList.get(position).getAttributes();
+        System.out.println(attributes.getActive());
 
-        viewHolder.nama.setText(attributes.getProvinsi());
-        viewHolder.total.setText("Total kasus: " + String.valueOf(meninggal + positif + sembuh));
+        viewHolder.nama.setText(attributes.getCountry_Region());
+        viewHolder.total.setText("Total kasus: " + String.valueOf(Integer.parseInt(attributes.getConfirmed())));
     }
 
     //Untuk mendapatkan berapa banyak data
     @Override
     public int getItemCount() {
-        return provinsiList.size();
+        return globalList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,13 +63,13 @@ public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapt
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Attributes attributes = provinsiList.get(getAdapterPosition()).getAttributes();
-                    Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, DetailProvinsi.class);
-                    intent.putExtra("provinsi", attributes.getProvinsi());
-                    intent.putExtra("positif", attributes.getKasus_Posi());
-                    intent.putExtra("sembuh", attributes.getKasus_Semb());
-                    intent.putExtra("meninggal", attributes. getKasus_Meni());
+                    Attributes attributes = globalList.get(getAdapterPosition()).getAttributes();
+                    Toast.makeText(context, "Nama Provinsi: " + attributes.getCountry_Region(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, DetailGlobal.class);
+                    intent.putExtra("region", attributes.getCountry_Region());
+                    intent.putExtra("active", attributes.getActive());
+                    intent.putExtra("recovered", attributes.getRecovered());
+                    intent.putExtra("deaths", attributes.getDeaths());
                     context.startActivity(intent);
                 }
             });

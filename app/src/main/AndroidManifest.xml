@@ -20,12 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainGlobal" />
+
         <activity android:name=".MainIndonesia" />
 
         <activity android:name=".MainProvinsi" />
 
         <activity android:name=".DetailProvinsi" />
+
+        <activity android:name=".DetailGlobal" />
     </application>
-
-
 </manifest>
