@@ -1,6 +1,6 @@
-package com.md15.coronavirus.retrofit;
+package com.md15.coronavirus.retrofit.provinsi;
 
-public class AttributesIndo {
+public class Attributes {
     private String Provinsi;
     private String Kasus_Posi;
     private String Kasus_Semb;

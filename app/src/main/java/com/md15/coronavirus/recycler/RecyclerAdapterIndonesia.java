@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.md15.coronavirus.DetailProvinsi;
 import com.md15.coronavirus.R;
-import com.md15.coronavirus.retrofit.AttributesIndo;
-import com.md15.coronavirus.retrofit.Provinsi;
+import com.md15.coronavirus.retrofit.provinsi.Attributes;
+import com.md15.coronavirus.retrofit.provinsi.Provinsi;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapt
     //Untuk mengatur data nama provinsi di API kawalcorona
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        AttributesIndo attributes = provinsiList.get(position).getAttributes();
+        Attributes attributes = provinsiList.get(position).getAttributes();
         int meninggal = Integer.parseInt(attributes.getKasus_Meni());
         int positif = Integer.parseInt(attributes.getKasus_Posi());
         int sembuh = Integer.parseInt(attributes.getKasus_Semb());
@@ -64,13 +64,13 @@ public class RecyclerAdapterIndonesia extends RecyclerView.Adapter<RecyclerAdapt
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AttributesIndo attributesIndo = provinsiList.get(getAdapterPosition()).getAttributes();
-                    Toast.makeText(context, "Nama Provinsi: " + attributesIndo.getProvinsi(), Toast.LENGTH_SHORT).show();
+                    Attributes attributes = provinsiList.get(getAdapterPosition()).getAttributes();
+                    Toast.makeText(context, "Nama Provinsi: " + attributes.getProvinsi(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, DetailProvinsi.class);
-                    intent.putExtra("provinsi", attributesIndo.getProvinsi());
-                    intent.putExtra("positif", attributesIndo.getKasus_Posi());
-                    intent.putExtra("sembuh", attributesIndo.getKasus_Semb());
-                    intent.putExtra("meninggal", attributesIndo. getKasus_Meni());
+                    intent.putExtra("provinsi", attributes.getProvinsi());
+                    intent.putExtra("positif", attributes.getKasus_Posi());
+                    intent.putExtra("sembuh", attributes.getKasus_Semb());
+                    intent.putExtra("meninggal", attributes. getKasus_Meni());
                     context.startActivity(intent);
                 }
             });

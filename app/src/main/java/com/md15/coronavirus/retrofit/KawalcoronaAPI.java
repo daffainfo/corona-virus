@@ -1,5 +1,7 @@
 package com.md15.coronavirus.retrofit;
 
+import com.md15.coronavirus.retrofit.provinsi.Provinsi;
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

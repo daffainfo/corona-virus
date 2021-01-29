@@ -85,7 +85,7 @@ public class MainIndonesia extends AppCompatActivity {
 
                     PieChartData pieChartData = new PieChartData(pieData);
                     pieChartData.setHasLabels(true).setValueLabelTextSize(13);
-                    pieChartData.setHasCenterCircle(true).setCenterText1("Total kasus\n" + indonesia.getPositif()).setCenterText1FontSize(16).setCenterText1Color(Color.GRAY);
+                    pieChartData.setHasCenterCircle(true).setCenterText1("Total kasus\n" + indonesia.getPositif()).setCenterText1FontSize(16).setCenterText1Color(Color.WHITE);
                     pieChartView.setPieChartData(pieChartData);
                     pieChartView.setChartRotationEnabled(false);
 

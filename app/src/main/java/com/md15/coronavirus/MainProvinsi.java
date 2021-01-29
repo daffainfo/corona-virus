@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.md15.coronavirus.recycler.RecyclerAdapterIndonesia;
 import com.md15.coronavirus.retrofit.KawalcoronaAPI;
-import com.md15.coronavirus.retrofit.Provinsi;
+import com.md15.coronavirus.retrofit.provinsi.Provinsi;
 
 import java.util.ArrayList;
 import java.util.List;
