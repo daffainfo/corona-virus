@@ -40,16 +40,16 @@ public class DetailProvinsi extends AppCompatActivity {
         meninggal.setText("Meninggal\n" + setMeninggal);
         sembuh.setText("Sembuh\n" + setSembuh);
 
-        //String -> int agar bisa dijadikan chart
+        //Convert string menjadi int agar bisa dijadikan chart
         int positif = Integer.parseInt(setPositif);
         int sembuh = Integer.parseInt(setSembuh);
         int meninggal = Integer.parseInt(setMeninggal);
         int totalKasus = positif + sembuh + meninggal;
 
         //Persentase untuk pie chart
-        float persenPositif = (positif * 100) / totalKasus;
-        float persenSembuh = (sembuh * 100) / totalKasus;
-        float persenMeninggal = (meninggal * 100) / totalKasus;
+        int persenPositif = (positif * 100) / totalKasus;
+        int persenSembuh = (sembuh * 100) / totalKasus;
+        int persenMeninggal = (meninggal * 100) / totalKasus;
 
         //Pie chart
         List pieData = new ArrayList<>();

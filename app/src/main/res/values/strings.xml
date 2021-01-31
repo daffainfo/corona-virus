@@ -3,4 +3,8 @@
     <string name="title_activity_tabbed">Tabbed</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="sembuh">Sembuh</string>
+    <string name="meninggal">Meninggal</string>
+    <string name="positif">Positif</string>
+    <string name="data_indonesia">Data Indonesia</string>
 </resources>

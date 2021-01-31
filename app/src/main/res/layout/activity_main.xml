@@ -20,7 +20,7 @@
             android:gravity="center"
             android:layout_margin="30dp"
             android:textColor="@color/white"
-            android:text="Data Indonesia"/>
+            android:text="@string/data_indonesia"/>
 
         <LinearLayout
             android:gravity="center"
@@ -51,7 +51,7 @@
                 android:gravity="center"
                 android:layout_margin="15dp"
                 android:textColor="@color/white"
-                android:text="Positif"/>
+                android:text="@string/positif"/>
 
             <TextView
                 android:id="@+id/meninggalIndo"
@@ -61,7 +61,7 @@
                 android:gravity="center"
                 android:layout_margin="15dp"
                 android:textColor="@color/white"
-                android:text="Meninggal"/>
+                android:text="@string/meninggal"/>
 
             <TextView
                 android:id="@+id/sembuhIndo"
@@ -71,7 +71,7 @@
                 android:gravity="center"
                 android:layout_margin="15dp"
                 android:textColor="@color/white"
-                android:text="Sembuh"/>
+                android:text="@string/sembuh"/>
 
         </LinearLayout>
 

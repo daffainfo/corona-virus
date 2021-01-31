@@ -13,7 +13,7 @@ import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
 
 public class DetailGlobal extends AppCompatActivity {
-    private TextView provinsi, positif, sembuh, meninggal;
+    private TextView region, positif, sembuh, meninggal;
     private PieChartView pieChartView;
 
     @Override
@@ -22,7 +22,7 @@ public class DetailGlobal extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         //Mengakses ID layout untuk textview
-        provinsi = findViewById(R.id.nameDetails);
+        region = findViewById(R.id.nameDetails);
         positif = findViewById(R.id.positifDetails);
         sembuh = findViewById(R.id.sembuhDetails);
         meninggal = findViewById(R.id.meninggalDetails);
@@ -36,7 +36,7 @@ public class DetailGlobal extends AppCompatActivity {
         String setTotal = getIntent().getExtras().getString("confirmed");
 
         //Set text
-        provinsi.setText(setRegion);
+        region.setText(setRegion);
         positif.setText("Positif\n" + setPositif);
         meninggal.setText("Meninggal\n" + setMeninggal);
         sembuh.setText("Sembuh\n" + setSembuh);
@@ -48,9 +48,9 @@ public class DetailGlobal extends AppCompatActivity {
         int totalKasus = Integer.parseInt(setTotal);
 
         //Persentase untuk pie chart
-        float persenPositif = (positif * 100) / totalKasus;
-        float persenSembuh = (sembuh * 100) / totalKasus;
-        float persenMeninggal = (meninggal * 100) / totalKasus;
+        int persenPositif = (positif * 100) / totalKasus;
+        int persenSembuh = (sembuh * 100) / totalKasus;
+        int persenMeninggal = (meninggal * 100) / totalKasus;
 
         //Pie chart
         List pieData = new ArrayList<>();

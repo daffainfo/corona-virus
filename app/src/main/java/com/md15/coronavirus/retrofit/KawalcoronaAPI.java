@@ -10,8 +10,8 @@ import retrofit2.http.Url;
 
 //Interface yang berisi endpoint dari API kawalcorona
 public interface KawalcoronaAPI {
-        @GET
-        Call<List<Global>> getGlobal(@Url String url);
+        @GET("/")
+        Call<List<Global>> getGlobal();
 
         @GET("indonesia")
         Call<List<Indonesia>> getIndonesia();

@@ -1,5 +1,5 @@
 package com.md15.coronavirus.retrofit.global;
-
+// Membuat class lagi bernama Attributes.java karena response dari API tersebut adalah nested objects
 public class Attributes {
     private String Country_Region;
     private String Confirmed;

@@ -19,8 +19,8 @@ import com.md15.coronavirus.retrofit.global.Global;
 import java.util.List;
 
 public class RecyclerAdapterGlobal extends RecyclerView.Adapter<RecyclerAdapterGlobal.ViewHolder> {
-    Context context;
     List<Global> globalList;
+    Context context;
 
     public RecyclerAdapterGlobal(List<Global> globalList, Context context) {
         this.globalList = globalList;
@@ -38,11 +38,9 @@ public class RecyclerAdapterGlobal extends RecyclerView.Adapter<RecyclerAdapterG
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Attributes attributes = globalList.get(position).getAttributes();
-        System.out.println(attributes.getActive());
-        int confirmed = Integer.parseInt(attributes.getConfirmed());
 
         viewHolder.nama.setText(attributes.getCountry_Region());
-        viewHolder.total.setText("Total kasus: " + String.valueOf(confirmed));
+        viewHolder.total.setText("Total kasus: " + attributes.getConfirmed());
     }
 
     //Untuk mendapatkan berapa banyak data

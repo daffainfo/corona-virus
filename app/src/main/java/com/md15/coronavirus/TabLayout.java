@@ -14,6 +14,7 @@ public class TabLayout extends TabActivity {
         TabHost.TabSpec tabSpec;
         Intent intent;
 
+        //Menambahkan tab baru untuk menampilkan activity global
         intent = new Intent().setClass(this, MainGlobal.class);
         tabSpec = tabHost.newTabSpec("Global").setIndicator("Global", null).setContent(intent);
         tabHost.addTab(tabSpec);

@@ -66,7 +66,7 @@ public class MainIndonesia extends AppCompatActivity {
             public void onResponse(Call<List<Indonesia>> call, Response<List<Indonesia>> response) {
                 List<Indonesia> indo = response.body();
                 for (Indonesia indonesia : indo) {
-                    //Regex buat menghilangkan koma di value API
+                    //Regex buat menghilangkan koma di value API agar bisa masuk pie chart
                     String dataPositif = indonesia.getPositif().replaceAll(",", "");
                     String dataDirawat = indonesia.getDirawat().replaceAll(",", "");
                     String dataMeninggal = indonesia.getMeninggal().replaceAll(",", "");

@@ -56,7 +56,7 @@ public class MainGlobal extends AppCompatActivity {
 
         KawalcoronaAPI kawalcoronaAPI = retrofit.create(KawalcoronaAPI.class);
 
-        Call<List<Global>> call = kawalcoronaAPI.getGlobal("/");
+        Call<List<Global>> call = kawalcoronaAPI.getGlobal();
         call.enqueue(new Callback<List<Global>>() {
             //Jika berhasil, maka akan menampilkan recycler view yang berisi response dari API
             @Override
